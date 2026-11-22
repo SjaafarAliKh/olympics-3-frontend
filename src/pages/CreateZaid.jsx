@@ -1,49 +1,50 @@
 import axios from 'axios';
-import {useState} from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router';
 
 function CreateZaid() {
-    const [formData, setFormData] = useState({
-    Name:"",
+  const [formData, setFormData] = useState({
+    Name: "",
     ZaidImage: "",
   });
 
-  
+
   const navigate = useNavigate()
-  function handleChange(event){
-    setFormData({...formData, [event.target.name]:event.target.value})
+  function handleChange(event) {
+    setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
 
-  
-    async function handleSubmit(event){
-      const createdZaid = await axios.post(`${import.meta.env.VITE_BACK_END_SERVER_URL}/zaids`,formData)
-      navigate('/zaids')
-    }
 
-  
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const createdZaid = await axios.post(`${import.meta.env.VITE_BACK_END_SERVER_URL}/zaids`, formData)
+    navigate('/zaids')
+  }
+
+
   return (
     <div>
-        <h1>Create Zaid</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Zaid Name: </label>
-            <input 
-            name="name"
-            type="text"
-            id="name"
-            onChange={handleChange}
-            value={formData.Name}
-            />
-            <label htmlFor="zaidImage">Zaid Image: </label>
-            <input 
-            name="zaidImage"
-            type="text"
-            id="zaidImage"
-            onChange={handleChange}
-            value={formData.ZaidImage}
-            />
-            <button>Create Zaid</button>
-          </form>
+      <h1>Create Zaid</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Zaid Name: </label>
+        <input
+          name="name"
+          type="text"
+          id="name"
+          onChange={handleChange}
+          value={formData.Name}
+        />
+        <label htmlFor="zaidImage">Zaid Image: </label>
+        <input
+          name="zaidImage"
+          type="text"
+          id="zaidImage"
+          onChange={handleChange}
+          value={formData.ZaidImage}
+        />
+        <button>Create Zaid</button>
+      </form>
     </div>
   )
 }
