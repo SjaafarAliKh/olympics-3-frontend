@@ -5,6 +5,7 @@ import AllZaids from "./pages/AllZaids"
 import ZaidDetails from "./pages/ZaidDetails";
 import CreateZaid from "./pages/CreateZaid";
 import UpdateZaid from "./pages/UpdateZaid";
+import './App.css' 
 
 function App() {
   return (

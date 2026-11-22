@@ -28,7 +28,7 @@ function UpdateZaid() {
   
     async function handleSubmit(event){
       event.preventDefault()
-      const createdHoot = await axios.put(`${import.meta.env.VITE_BACK_END_SERVER_URL}/zaids/${zaidId}`)
+      const createdHoot = await axios.put(`${import.meta.env.VITE_BACK_END_SERVER_URL}/zaids/${zaidId}`,formData)
       navigate('/zaids')
     }
 
